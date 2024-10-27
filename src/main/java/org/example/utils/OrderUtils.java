@@ -1,7 +1,7 @@
 package org.example.utils;
 
-import org.example.Order;
-import org.example.Product;
+import org.example.domain.models.Order;
+import org.example.domain.models.Product;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -12,18 +12,18 @@ public class OrderUtils {
     }
 
     public static Order generateOrder() {
-        Order order = new Order();
-        order.setId(1L);
-        order.setDescription("Order description");
-        order.setProductList(List.of(generateProduct(1L), generateProduct(2L)));
-        return order;
+        return Order.builder()
+                .setId(1L)
+                .setDescription("Order description")
+                .setProductList(List.of(generateProduct(1L), generateProduct(2L)))
+                .build();
     }
 
     public static Product generateProduct(Long id) {
-        Product product = new Product();
-        product.setId(id);
-        product.setName("Product" + id);
-        product.setPrice(BigDecimal.valueOf(12));
-        return product;
+        return Product.builder()
+                .setId(id)
+                .setName("Product" + id)
+                .setPrice(BigDecimal.valueOf(12))
+                .build();
     }
 }

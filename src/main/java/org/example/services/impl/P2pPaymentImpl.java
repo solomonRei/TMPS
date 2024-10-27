@@ -1,4 +1,6 @@
-package org.example.payments;
+package org.example.services.impl;
+
+import org.example.services.PaymentService;
 
 import java.math.BigDecimal;
 
