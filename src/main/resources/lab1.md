@@ -34,6 +34,32 @@ The project is organized into the following packages:
 - **models**: Contains data models for the project, such as `Order` and `Product`.
 - **services**: Contains service interfaces and implementations used for processing orders, applying discounts, and handling payments.
 - **utils**: Contains utility classes such as `DBConnect` and `DBConnectionPool` for database management.
+```angular2html
+org.example
+├── Main
+├── domain
+│   ├── factory
+│   │   ├── P2pFactory
+│   │   ├── PaypalFactory
+│   │   └── PaymentFactory
+│   ├── models
+│   │   ├── Order
+│   │   └── Product
+│   └── services
+│       ├── DiscountService
+│       ├── OrderService
+│       ├── PaymentService
+│       └── impl
+│           ├── OrderServiceImpl
+│           ├── P2pDiscountImpl
+│           ├── P2pPaymentImpl
+│           ├── PaypalDiscountImpl
+│           └── PaypalPaymentImpl
+└── utils
+    ├── DBConnect
+    ├── DBConnectionPool
+    └── OrderUtils
+```
 
 ---
 
@@ -197,6 +223,44 @@ public class Order {
     // Getters and other methods
 }
 ```
+
+## Results Description
+
+The output of the program demonstrates the successful execution of order processing using different payment methods (PayPal and P2P) and showcases the use of various design patterns (Singleton, Prototype, Factory, Builder). Here’s a breakdown of the results:
+
+### Database Connection Pooling
+
+- **Connection Creation**:
+   - The output starts by showing that two connections to the database are established, each represented by a unique object reference (`org.postgresql.jdbc.PgConnection@578486a3` and `org.postgresql.jdbc.PgConnection@35d176f7`). This is due to the initialization of the connection pool with two connections.
+- **Connection Reuse**:
+   - For each order processing task, a connection is borrowed from the pool, used, and then returned, as indicated by the log "Connection returned to pool." This demonstrates the Singleton pattern and the connection reuse in `DBConnectionPool`.
+
+### Order Processing
+
+1. **Processing with PayPal Payment**:
+   - The program processes an order with PayPal, applying a **PayPal-specific discount** (10%) to a total amount of `24`, resulting in a discounted total of `21.6`.
+   - After the discount is applied, the log shows "Paying 21.6 using PayPal," confirming that the adjusted amount was charged.
+
+2. **Creating Invoices Using Prototype Pattern**:
+   - **Original Order Description**: `Order{id=1, description='Order description', productList=[Product{id=1, name='Product1', price=12}, Product{id=2, name='Product2', price=12}]}`
+   - **Manager Invoice**: `Order{id=1, description='Manager Invoice', ...}`
+   - **User Invoice**: `Order{id=1, description='User Invoice', ...}`
+   - These three instances demonstrate the Prototype pattern with a copy constructor, creating distinct descriptions ("Manager Invoice" and "User Invoice") based on the original order. This allows for modified instances without changing the original.
+
+3. **Processing with P2P Payment**:
+   - The program processes another order with P2P, applying a **P2P-specific discount** (15%) to the total amount of `24`, resulting in a discounted total of `20.40`.
+   - The log "Paying 20.40 using P2P" confirms that the adjusted amount was charged for the P2P payment method.
+
+### Summary of Key Outputs
+
+- **Connection Reuse**: After each transaction, the connection is returned to the pool, showing effective connection management.
+- **Discounts**: Different discounts were applied based on the payment method (10% for PayPal, 15% for P2P), demonstrating the Factory pattern by using specific implementations of `DiscountService`.
+- **Invoice Creation**: The Prototype pattern is applied by creating tailored invoices (manager and user) based on the original order data.
+
+Overall, the output validates the proper implementation of creational design patterns and their integration in an order processing workflow.
+
+### Raw Output Summary
+![img.png](img.png)
 
 ## Conclusion
 This laboratory work provided hands-on experience in applying creational design patterns in an object-oriented project. By using Singleton, Builder, Factory, and Prototype patterns, the project demonstrates a flexible, maintainable, and modular approach to managing object creation in Java.
