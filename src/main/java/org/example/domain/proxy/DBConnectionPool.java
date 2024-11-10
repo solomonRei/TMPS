@@ -1,11 +1,11 @@
-package org.example.utils;
+package org.example.domain.proxy;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class DBConnectionPool {
     private static volatile DBConnectionPool instance;
-    private final Queue<DBConnect> pool = new LinkedList<>();
+    private final Queue<DBConnection> pool = new LinkedList<>();
 
     private DBConnectionPool(int initialSize) {
         for (int i = 0; i < initialSize; i++) {
@@ -24,22 +24,22 @@ public class DBConnectionPool {
         return instance;
     }
 
-    public DBConnect getConnection() {
+    public DBConnection getConnection() {
         if (pool.isEmpty()) {
             System.out.println("Pool is empty, creating new connection");
-            return DBConnect.newConnection();
+            return new CachingDBConnectionProxy(DBConnect.newConnection());
         }
-        return pool.poll();
+        return new CachingDBConnectionProxy(pool.poll());
     }
 
-    public void returnConnectionBack(DBConnect connection) {
+    public void returnConnectionBack(DBConnection connection) {
         pool.offer(connection);
         System.out.println("Connection returned to pool: " + connection);
     }
 
     public void closeAllConnections() {
         while (!pool.isEmpty()) {
-            DBConnect connection = pool.poll();
+            DBConnection connection = pool.poll();
             connection.close();
         }
     }

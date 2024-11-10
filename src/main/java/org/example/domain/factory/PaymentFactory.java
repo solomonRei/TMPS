@@ -5,5 +5,6 @@ import org.example.services.PaymentService;
 
 public interface PaymentFactory {
     PaymentService createPaymentService();
+
     DiscountService createDiscountService();
 }

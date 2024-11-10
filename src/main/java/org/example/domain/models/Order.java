@@ -20,6 +20,10 @@ public class Order {
         this.productList = other.productList;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public Long getId() {
         return id;
     }
@@ -32,8 +36,13 @@ public class Order {
         return productList;
     }
 
-    public static Builder builder() {
-        return new Builder();
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", productList=" + productList +
+                '}';
     }
 
     public static class Builder {
@@ -62,14 +71,5 @@ public class Order {
         public Order build() {
             return new Order(id, description, productList);
         }
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", productList=" + productList +
-                '}';
     }
 }

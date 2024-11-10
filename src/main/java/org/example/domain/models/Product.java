@@ -10,6 +10,16 @@ public class Product {
 
     private final String name;
 
+    private Product(Long id, BigDecimal price, String name) {
+        this.id = id;
+        this.price = price;
+        this.name = name;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public Long getId() {
         return id;
     }
@@ -22,14 +32,13 @@ public class Product {
         return name;
     }
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
-    private Product(Long id, BigDecimal price, String name) {
-        this.id = id;
-        this.price = price;
-        this.name = name;
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                '}';
     }
 
     public static class Builder {
@@ -58,15 +67,6 @@ public class Product {
         public Product build() {
             return new Product(id, price, name);
         }
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                '}';
     }
 
 }
