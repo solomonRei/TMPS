@@ -88,23 +88,23 @@ org.example
     - **Class**: `DBConnectionPool`
     - **Purpose**: Manages database connections by providing a single, shared instance of the connection pool throughout the application.
     - **Implementation**: A private constructor and a synchronized `getInstance()` method ensure only one instance of `DBConnectionPool` is created.
-   ![img_3.png](img/img_3.png)
+   ![img_3.png](img/lab1/img_3.png)
 2. **Builder Pattern**:
     - **Class**: `Order`, `Product`
     - **Purpose**: Allows flexible creation of `Order` instances with a fluent API, enabling customization of fields such as `id`, `description`, and `productList`.
     - **Implementation**: A nested `Builder` class provides `set` methods for each field, with a final `build()` method that returns the constructed `Order` instance.
-   ![img_1.png](img/img_1.png)
+   ![img_1.png](img/lab1/img_1.png)
 3. **Factory Pattern**:
     - **Classes**: `PaymentFactory`, `P2pFactory`, `PaypalFactory`
     - **Purpose**: Provides a way to create different implementations of `PaymentService` and `DiscountService` depending on the payment type (e.g., P2P or PayPal).
     - **Implementation**: The `PaymentFactory` interface defines methods for creating `PaymentService` and `DiscountService`. `P2pFactory` and `PaypalFactory` are concrete implementations that instantiate the respective services.
-   ![img.png](img/img.png)
+   ![img.png](img/lab1/img.png)
 
 4. **Prototype Pattern**:
     - **Class**: `Order`
     - **Purpose**: Enables the creation of modified copies of an existing `Order` instance using a copy constructor, particularly useful for creating different types of invoices (e.g., manager vs. customer invoice).
     - **Implementation**: A copy constructor in `Order` (`public Order(Order original, String description)`) initializes a new `Order` based on the original, allowing certain fields, like `description`, to be modified while copying others, like `id` and `productList`.
-   ![img_2.png](img/img_2.png)
+   ![img_2.png](img/lab1/img_2.png)
 ---
 
 ## Code Snippets
@@ -260,7 +260,7 @@ The output of the program demonstrates the successful execution of order process
 Overall, the output validates the proper implementation of creational design patterns and their integration in an order processing workflow.
 
 ### Raw Output Summary
-![img.png](img.png)
+![img.png](img/lab0/img.png)
 
 ## Conclusion
 This laboratory work provided hands-on experience in applying creational design patterns in an object-oriented project. By using Singleton, Builder, Factory, and Prototype patterns, the project demonstrates a flexible, maintainable, and modular approach to managing object creation in Java.

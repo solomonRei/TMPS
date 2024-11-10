@@ -71,7 +71,7 @@ java/
     |-- Main.java
 ```
 
-### **3.2 Project Structure**
+### **3.2 Implementation **
 - **Adapter** - used to adapt international and domestic taxes during the payment process.
     In my code, I have two different tax calculation services: `DomesticTaxAPI` and `InternationalTaxAPI`.
     I have created two adapters: `DomesticTaxAdapter` and `InternationalTaxAdapter` that implement the `TaxCalculator` interface.
@@ -84,6 +84,7 @@ java/
    BigDecimal tax = taxCalculator.calculateTax(finalAmount);
    BigDecimal totalWithTax = finalAmount.add(tax);
   ```
+  ![img_1.png](img/lab2/img_1.png)
 - **Facade** - used to simplify the process of creating an order.
 I have created an `OrderFacade` class that contains methods for checking the availability of products, creating an order, and sending notifications to the customer.
 This way, I can hide the complexity of the order creation process from the client code.
@@ -124,6 +125,8 @@ Moreover, the `LoyaltyDiscountDecorator` class adds a discount for loyal custome
                 BigDecimal.valueOf(500)
         );
    ```
+  ![img_5.png](img/lab2/img_5.png)
+  ![img_2.png](img/lab2/img_2.png)
 - **Proxy** - used to cache database connections. I have created a CachingDBConnectionProxy class that implements the DBConnection interface.
 it caches the database connection and reuses it for subsequent requests. This approcush is used nowadays in many applications to improve performance. (e.g. Spring Data JPA, Hibernate, etc.)
    ```java
@@ -139,3 +142,11 @@ it caches the database connection and reuses it for subsequent requests. This ap
     ```
   So, if the query has been executed before, the proxy will return the cached data instead of executing the query again. 
   We have to check instance of `CacheableConnection` to get the cached data. 
+![img_7.png](img/lab2/img_7.png)
+![img_3.png](img/lab2/img_3.png)
+
+### **3.3 Results and Conclusions**
+As we can see from the output, we have a different calls from our Facade (eg. "---NOTIFICAITON---", "---TAX CALCULATION---", "---PAYMENT---", etc )
+that proves that our Facade is working correctly. Moreover, we have a cached data from our Proxy (eg. "Cached query results:"). Our proxy adds a caching layer to the database connection and reuses the connection for subsequent requests. 
+Finally, we have a different discounts from our Decorator (eg. "Big purchase discount", "Loyalty discount", "Seasonal discount").
+![img_4.png](img/lab2/img_4.png)
