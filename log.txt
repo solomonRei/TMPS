@@ -1,0 +1,42 @@
+DEBUG: Sending notification: Your order has been placed successfully!
+DEBUG: 
+----QUERY RESULTS----
+DEBUG: 
+----CACHED QUERY RESULTS----
+DEBUG: Sending notification: Your order has been placed successfully!
+DEBUG: 
+----QUERY RESULTS----
+DEBUG: 
+----CACHED QUERY RESULTS----
+DEBUG: 
+----QUERY RESULTS----
+DEBUG: 
+----CACHED QUERY RESULTS----
+DEBUG: 
+----QUERY RESULTS----
+DEBUG: 
+----CACHED QUERY RESULTS----
+DEBUG: 
+----QUERY RESULTS----
+DEBUG: 
+----CACHED QUERY RESULTS----
+DEBUG: 
+----QUERY RESULTS----
+DEBUG: 
+----CACHED QUERY RESULTS----
+DEBUG: 
+----QUERY RESULTS----
+DEBUG: 
+----CACHED QUERY RESULTS----
+DEBUG: 
+----QUERY RESULTS----
+DEBUG: 
+----CACHED QUERY RESULTS----
+DEBUG: 
+----QUERY RESULTS----
+DEBUG: 
+----CACHED QUERY RESULTS----
+DEBUG: 
+----QUERY RESULTS----
+DEBUG: 
+----CACHED QUERY RESULTS----

@@ -1,5 +1,7 @@
 package org.example.services.impl;
 
+import org.example.domain.loggerChain.LogLevel;
+import org.example.domain.loggerChain.LoggerChain;
 import org.example.services.DiscountService;
 
 import java.math.BigDecimal;
@@ -9,7 +11,7 @@ public class PaypalDiscountImpl implements DiscountService {
 
     @Override
     public BigDecimal applyDiscount(BigDecimal amount) {
-        System.out.println("Applying Paypal discount to " + amount);
+        LoggerChain.getLoggerChain().log("Applying Paypal discount to " + amount, LogLevel.INFO);
         return amount.multiply(BigDecimal.valueOf(DISCOUNT));
     }
 }
