@@ -82,7 +82,7 @@ java/
     |-- Main.java
 ```
 
-### **3.2 Implementation **
+### **3.2 Implementation**
 - **Chain of Responsibility** - used to log messages based on their severity. I have created a `Logger` interface that contains a method for logging messages.
   Then I have created concrete logger classes that implement the `Logger` interface and log messages with different levels of severity.
   For instance, the `InfoLogger` class logs messages with the INFO level, the `ErrorLogger` class logs messages with the ERROR level, and the `FileLogger` class logs messages to a file with DEBUG level.
@@ -116,5 +116,8 @@ java/
 ### **3.3 Results and Conclusions**
 As we can see from the output, we can see the INFO, ERROR, and DEBUG messages being logged by the logger chain, moreover DEBUG messages are being written to the file.
 Also, we can see that the user is being notified when the order is placed and when the product is out of stock.
+
+
 ![img.png](img/lab3/img_3.png)
+
 ![img.png](img/lab3/img_5.png)
